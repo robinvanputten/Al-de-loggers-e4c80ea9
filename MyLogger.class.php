@@ -58,6 +58,12 @@ class MyLogger
     }
 }
 
-$logger = new MyLogger('test');
-$logger->error('dit is een error');
+$logger = new MyLogger('TestClass');
+
+$logger->error('dit is een error'); 
+
+
+$logger2 = new MyLogger('DifferentClass');
+
+$logger2->error('dit is een andere error'); 
 ?>
