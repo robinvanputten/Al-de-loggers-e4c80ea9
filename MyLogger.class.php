@@ -1,10 +1,10 @@
 <?php
-class MyLogger 
+class MyLogger
 {
-    private string $origin;
+    private string $_origin;
 
     public function __construct($origin = '') {
-        $this->origin = $origin;
+        $this->_origin = $origin;
     }
 
     private function logWithTime($message) {
@@ -13,7 +13,7 @@ class MyLogger
 
     public function warning($message) {
         echo $this->logWithTime($this->displayOrigin() . 'WARNING: ' . $message . PHP_EOL);
-    }	
+    }
 
     public function error($message) {
         echo $this->logWithTime($this->displayOrigin() . 'ERROR: ' . $message . PHP_EOL);
@@ -29,41 +29,41 @@ class MyLogger
 
     public function log($message, $loglevel = "") {
         switch ($loglevel) {
-            case 'WARNING':
-                $this->warning($message);
-                break;
-            case 'ERROR':
-                $this->error($message);
-                break;
-            case 'DEBUG':
-                $this->debug($message);
-                break;
-            case 'INFO':
-                $this->info($message);
-                break;
-            default:
-                echo $message;
-                break;
+        case 'WARNING':
+            $this->warning($message);
+            break;
+        case 'ERROR':
+            $this->error($message);
+            break;
+        case 'DEBUG':
+            $this->debug($message);
+            break;
+        case 'INFO':
+            $this->info($message);
+            break;
+        default:
+            echo $message;
+            break;
         }
     }
-    
+
     public function setOrigin($orig) {
-        $this->origin = $orig;
+        $this->_origin = $orig;
     }
 
     public function displayOrigin() {
-        if ($this->origin) {
-            return $this->origin . ' - ';
+        if ($this->_origin) {
+            return $this->_origin . ' - ';
         }
     }
 }
 
 $logger = new MyLogger('TestClass');
 
-$logger->error('dit is een error'); 
+$logger->error('dit is een error');
 
 
 $logger2 = new MyLogger('DifferentClass');
 
-$logger2->error('dit is een andere error'); 
+$logger2->error('dit is een andere error');
 ?>
